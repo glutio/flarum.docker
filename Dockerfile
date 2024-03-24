@@ -3,9 +3,9 @@ FROM composer:latest
 # Install Nginx and other dependencies
 RUN apk add --no-cache nginx supervisor
 
-WORKDIR /var/www
+WORKDIR /usr/local/nginx
 
-RUN composer create-project flarum/flarum . && composer config repositories.domainsso path extensions/glutio/domainsso && composer require glutio/domainsso:* --ignore-platform-req=ext-fileinfo
+RUN composer create-project flarum/flarum . && composer require glutio/domainsso:* --ignore-platform-req=ext-fileinfo
 
 COPY flarum/ .
 COPY conf/nginx.conf /etc/nginx/nginx.conf
