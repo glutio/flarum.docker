@@ -17,7 +17,7 @@ WORKDIR /var/www/flarum
 # Install Flarum and other dependencies via Composer
 RUN composer create-project flarum/flarum . && \
     composer require glutio/domainsso:* && \
-    php flarum assets:publish && \
+    php flarum "assets:publish" && \
     docker-php-ext-install pdo_mysql
 
 # Copy your Nginx and Supervisor configuration files
