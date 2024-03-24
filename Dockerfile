@@ -2,7 +2,7 @@
 FROM composer:latest as composer
 
 # Now use the PHP image where your application will reside
-FROM php:7.4-fpm-alpine
+FROM php:fpm-alpine3.18
 
 # Copy Composer from the Composer image
 COPY --from=composer /usr/bin/composer /usr/bin/composer
