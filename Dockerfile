@@ -5,11 +5,11 @@ RUN apk add --no-cache nginx supervisor
 
 WORKDIR /var/www
 
+RUN composer create-project flarum/flarum . && composer config repositories.domainsso path extensions/glutio/domainsso && composer require glutio/domainsso:* --ignore-platform-req=ext-fileinfo
+
 COPY flarum/ .
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/supervisord.conf /etc/supervisord.conf
-
-RUN composer create-project flarum/flarum . && composer config repositories.domainsso path extensions/glutio/domainsso && composer require glutio/domainsso:* --ignore-platform-req=ext-fileinfo
 
 EXPOSE 80
 
