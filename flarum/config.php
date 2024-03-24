@@ -5,7 +5,7 @@
     'driver' => 'mysql',
     'host' => getenv('FLARUM_DB_HOST'),
     'port' => getenv('FLARUM_DB_PORT'),
-    'database' => getenv('FLARUM_DB') ?? 'flarum',
+    'database' => getenv('FLARUM_DB'),
     'username' => getenv('FLARUM_DB_USER'),
     'password' => getenv('FLARUM_DB_PASSWORD'),
     'charset' => 'utf8mb4',
@@ -26,11 +26,4 @@
     'poweredByHeader' => true,
     'referrerPolicy' => 'same-origin',
   ),
-  'glutio-domainsso' =>
-  array(
-    'url' => getenv('FLARUM_DOMAINSSO_URL'),
-    'login' => getenv('FLARUM_DOMAINSSO_LOGIN') ?? '/api/auth/signin',
-    'logout' => getenv('FLARUM_DOMAINSSO_LOGOUT') ??'/api/auth/signout',
-    'session' => getenv('FLARUM_DOMAINSSO_SESSION') ??'/api/auth/session',
-  )
 );
