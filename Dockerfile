@@ -22,7 +22,7 @@ COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/supervisord.conf /etc/supervisord.conf
 
 # Copy your Flarum application files if needed
-COPY flarum/ .
+COPY --chown=www-data:www-data flarum/ .
 
 EXPOSE 80
 
