@@ -19,8 +19,6 @@ RUN composer create-project flarum/flarum . && \
     composer require glutio/domainsso:* && \
     docker-php-ext-install pdo_mysql
 
-RUN php flarum assets:publish
-
 # Copy your Nginx and Supervisor configuration files
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/supervisord.conf /etc/supervisord.conf
