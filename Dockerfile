@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM composer:latest
 
 # Install Nginx and other dependencies
 RUN apk add --no-cache nginx supervisor
