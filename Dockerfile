@@ -11,7 +11,8 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN apk add --no-cache nginx supervisor
 
 # Set the working directory for your Flarum application
-WORKDIR /var/www/html
+RUN mkdir /var/www/flarum
+WORKDIR /var/www/flarum
 
 # Install Flarum and other dependencies via Composer
 RUN composer create-project flarum/flarum . && \
@@ -23,7 +24,7 @@ COPY conf/supervisord.conf /etc/supervisord.conf
 
 # Copy your Flarum application files if needed
 COPY flarum/ .
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/flarum
 
 EXPOSE 80
 
