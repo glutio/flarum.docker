@@ -16,7 +16,7 @@ WORKDIR /var/www/flarum
 
 # Install Flarum and other dependencies via Composer
 RUN composer create-project flarum/flarum . && \
-    composer require glutio/domainsso:* ianm/log-viewer fof/oauth clarkwinkelmann/flarum-ext-passwordless
+    composer require ianm/log-viewer fof/oauth clarkwinkelmann/flarum-ext-passwordless isaced/flarum-ext-email-verification-switch
 
 # gd dependencies
 RUN apk add --no-cache \
