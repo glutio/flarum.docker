@@ -16,7 +16,18 @@ WORKDIR /var/www/flarum
 
 # Install Flarum and other dependencies via Composer
 RUN composer create-project flarum/flarum . && \
-    composer require glutio/domainsso:* && \
+    composer require glutio/domainsso:* ianm/log-viewer fof/oauth clarkwinkelmann/flarum-ext-passwordless
+
+# gd dependencies
+RUN apk add --no-cache \
+        libjpeg-turbo-dev \
+        libpng-dev \
+        libwebp-dev \
+        freetype-dev
+
+# As of PHP 7.4 we don't need to add --with-png for gd
+RUN docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype
+RUN docker-php-ext-install gd && \
     docker-php-ext-install pdo_mysql
 
 # Copy your Nginx and Supervisor configuration files
